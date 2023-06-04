@@ -9,7 +9,7 @@ public class Menu extends JPanel implements ActionListener {
     JComponent[] components;
     CardLayout crd;
 
-    public Menu(CardLayout crd){
+    public Menu(CardLayout crd, Dimension d){
         this.crd = crd;
         components = new JComponent[5];
 
@@ -19,6 +19,7 @@ public class Menu extends JPanel implements ActionListener {
         components[3] = new JButton("Optionen");
         components[4] = new JButton("Beenden");
 
+        this.setSize(d);
         render();
     }
 
@@ -58,6 +59,7 @@ public class Menu extends JPanel implements ActionListener {
         JButton k =(JButton) e.getSource();
         String name = k.getName();
         if (name.equals("Spielen")){
+
             crd.next(this.getParent());
         }
         if (name.equals("Rekorde")){

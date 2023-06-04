@@ -1,25 +1,24 @@
 package game.graphics.panels;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class GamePanel extends Panel {
-    Rectangle r = new Rectangle(100, 100, 100, 50);
+    private GamePanelCanvas canvas;
 
     CardLayout crd;
-    public GamePanel(CardLayout crd){
+    public GamePanel(CardLayout crd,Dimension d){
         this.crd = crd;
-        this.setSize(1000,600);
+        this.setSize(d);
+        canvas = new GamePanelCanvas(d);
 
-        Graphics g = this.getGraphics();
-
+        this.add(canvas);
     }
 
+    public GamePanelCanvas getCanvas() {
+        return canvas;
+    }
 
-
-
-    public void paint(Graphics g){
-        Graphics2D g2D = (Graphics2D) g ;
-        g2D.draw(r);
+    public void setCanvas(GamePanelCanvas canvas) {
+        this.canvas = canvas;
     }
 }

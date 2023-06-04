@@ -1,9 +1,10 @@
 package game;
 
-import java.awt.*;
+import game.controller.Controller;
+
 
 public class Main {
     public static void main(String[] args) {
-        new game.graphics.FelixFrame();
+        new Controller();
     }
 }
