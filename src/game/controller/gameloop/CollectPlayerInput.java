@@ -1,5 +1,6 @@
 package game.controller.gameloop;
 
+import game.controller.Playerthroughput;
 import game.graphics.panels.GamePanel;
 
 import java.awt.event.KeyEvent;
@@ -8,9 +9,11 @@ import java.awt.event.KeyListener;
 
 public class CollectPlayerInput implements KeyListener {
     private final Playerinput input;
+    private final Playerthroughput put;
 
-    CollectPlayerInput(Playerinput input){
+    CollectPlayerInput(Playerinput input, Playerthroughput put){
         this.input = input;
+        this.put = put;
     }
 
     public Playerinput getInput() {
@@ -39,6 +42,7 @@ public class CollectPlayerInput implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_S) input.setDown(true);
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             input.setSoll(false);
+            put.setWelches(0);
         }
     }
 }

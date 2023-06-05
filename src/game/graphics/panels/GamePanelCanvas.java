@@ -14,7 +14,6 @@ public class GamePanelCanvas extends Canvas {
     }
 
     public void setSize(){
-        System.out.println(""+this.getParent().getWidth() + this.getParent().getHeight() );
         this.setSize(this.getParent().getWidth(),this.getParent().getHeight());
     }
 

@@ -1,5 +1,6 @@
 package game.graphics;
 
+import game.controller.Playerthroughput;
 import game.graphics.panels.FelixMenu;
 import game.graphics.panels.GamePanel;
 
@@ -12,11 +13,11 @@ public class FelixFrame extends JFrame {
     private FelixMenu menu;
 
 
-    public FelixFrame(Dimension d){
+    public FelixFrame(Dimension d, Playerthroughput put){
         this.setTitle("Felix hat Spaß");
         this.setLayout(crd);
 
-        menu = new game.graphics.panels.FelixMenu(crd, d);
+        menu = new game.graphics.panels.FelixMenu(crd, d , put);
         game = new game.graphics.panels.GamePanel(crd,d);
 
 

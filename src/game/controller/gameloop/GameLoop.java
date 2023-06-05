@@ -1,5 +1,6 @@
 package game.controller.gameloop;
 
+import game.controller.Playerthroughput;
 import game.graphics.FelixFrame;
 import game.model.Model;
 
@@ -9,25 +10,29 @@ import java.util.Arrays;
 public class GameLoop{
     private Model model;
     private FelixFrame frame;
+    Playerinput input;
 
 
-    public GameLoop(Model model, FelixFrame frame){
+
+    public GameLoop(Model model, FelixFrame frame, Playerthroughput put){
         this.model = model;
         this.frame = frame;
-    }
+        input = new Playerinput();
 
 
-    public void loop(){
-        Playerinput input = new Playerinput();
-        CollectPlayerInput collect = new CollectPlayerInput(input);
+        CollectPlayerInput collect = new CollectPlayerInput(input,put);
 
         frame.getGame().addKeyListener(collect);
-        System.out.println(Arrays.toString(frame.getGame().getKeyListeners()));
-        long lastViewGame_time = System.currentTimeMillis();
+
         frame.getGame().requestFocus();
 
         frame.getGame().getCanvas().setSize();
         model.getEntities().get(0).setD(new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight()));
+    }
+
+
+    public void loop(){
+        long lastViewGame_time = System.currentTimeMillis();
 
         while (input.getSoll()){
 
@@ -52,6 +57,7 @@ public class GameLoop{
 
         }
 
+        input.setSoll(true);
         frame.next();
     }
 }

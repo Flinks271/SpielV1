@@ -1,6 +1,6 @@
 package game.graphics.panels;
 
-import game.controller.gameloop.GameLoop;
+import game.controller.Playerthroughput;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +10,10 @@ import java.awt.event.ActionListener;
 public class FelixMenu extends JPanel implements ActionListener {
     JComponent[] components;
     CardLayout crd;
+    Playerthroughput put;
 
-    public FelixMenu(CardLayout crd, Dimension d){
+    public FelixMenu(CardLayout crd, Dimension d, Playerthroughput put){
+        this.put = put;
         this.crd = crd;
         components = new JComponent[5];
 
@@ -62,7 +64,7 @@ public class FelixMenu extends JPanel implements ActionListener {
         JButton k =(JButton) e.getSource();
         String name = k.getName();
         if (name.equals("Spielen")){
-
+            put.setWelches(1);
             crd.next(this.getParent());
 
         }
