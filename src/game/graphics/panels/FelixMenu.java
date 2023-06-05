@@ -1,15 +1,17 @@
 package game.graphics.panels;
 
+import game.controller.gameloop.GameLoop;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Menu extends JPanel implements ActionListener {
+public class FelixMenu extends JPanel implements ActionListener {
     JComponent[] components;
     CardLayout crd;
 
-    public Menu(CardLayout crd, Dimension d){
+    public FelixMenu(CardLayout crd, Dimension d){
         this.crd = crd;
         components = new JComponent[5];
 
@@ -54,6 +56,7 @@ public class Menu extends JPanel implements ActionListener {
     }
 
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton k =(JButton) e.getSource();
@@ -61,6 +64,7 @@ public class Menu extends JPanel implements ActionListener {
         if (name.equals("Spielen")){
 
             crd.next(this.getParent());
+
         }
         if (name.equals("Rekorde")){
 

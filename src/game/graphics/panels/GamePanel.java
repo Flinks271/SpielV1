@@ -10,6 +10,9 @@ public class GamePanel extends Panel {
         this.crd = crd;
         this.setSize(d);
         canvas = new GamePanelCanvas(d);
+        FlowLayout f = new FlowLayout();
+        f.setVgap(0);
+        this.setLayout(f);
 
         this.add(canvas);
     }

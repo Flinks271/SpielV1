@@ -14,8 +14,8 @@ public abstract class Entities {
     Entities(int size, Dimension d){
         this.d = d;
         this.size = size;
-        this.pos_x = 10;
-        this.pos_y = 10;
+        this.pos_x = 100;
+        this.pos_y = 0;
         this.movSpeed = 100;
         boundingArea = new Rectangle(size,size);
         boundingArea.setLocation(pos_x,pos_y);
@@ -33,6 +33,7 @@ public abstract class Entities {
         }else {
             this.pos_x += timeDifference;
         }
+        boundingArea.setLocation(pos_x,pos_y);
     }
 
     //moves the y - coordinate with the help of the time difference since the last painted frame
@@ -45,6 +46,10 @@ public abstract class Entities {
         }else {
             this.pos_y += timeDifference;
         }
+    }
+
+    public void setLocation(){
+        boundingArea.setLocation(pos_x,pos_y);
     }
 
     public int getMovSpeed() {

@@ -13,10 +13,11 @@ public class Update {
 
         //Bewegung des Spielers
         Spieler spieler =(Spieler) model.getEntities().get(0);
-        if (input.getUp()){spieler.movePositionY(diffrence);}
-        if (input.getDown()){spieler.movePositionY(- diffrence);}
+        if (input.getUp()){spieler.movePositionY(- diffrence);}
+        if (input.getDown()){spieler.movePositionY(diffrence);}
         if (input.getRight()){spieler.movePositionX(diffrence);}
         if (input.getLeft()){spieler.movePositionX(- diffrence);}
+        spieler.setLocation();
 
 
 

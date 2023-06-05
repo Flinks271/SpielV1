@@ -10,10 +10,13 @@ public class GamePanelCanvas extends Canvas {
     private BufferStrategy strategy;
 
     GamePanelCanvas(Dimension d){
-
         this.setSize(d);
     }
 
+    public void setSize(){
+        System.out.println(""+this.getParent().getWidth() + this.getParent().getHeight() );
+        this.setSize(this.getParent().getWidth(),this.getParent().getHeight());
+    }
 
     public void generateStrategy() {
         createBufferStrategy(2);
@@ -34,6 +37,7 @@ public class GamePanelCanvas extends Canvas {
     //contains the objects to be drawn
     public void paint(Graphics g, Model model){
         Graphics2D g2D = (Graphics2D) g ;
+        super.paint(g);
 
         for (Entities e: model.getEntities()){
             ((Graphics2D) g).fill(e.getBoundingArea());

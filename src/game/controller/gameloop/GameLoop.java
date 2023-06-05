@@ -3,8 +3,7 @@ package game.controller.gameloop;
 import game.graphics.FelixFrame;
 import game.model.Model;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.*;
 import java.util.Arrays;
 
 public class GameLoop{
@@ -20,16 +19,22 @@ public class GameLoop{
 
     public void loop(){
         Playerinput input = new Playerinput();
-        CollectPlayerInput collect = new CollectPlayerInput(input, frame.getGame());
+        CollectPlayerInput collect = new CollectPlayerInput(input);
+
+        frame.getGame().addKeyListener(collect);
+        System.out.println(Arrays.toString(frame.getGame().getKeyListeners()));
         long lastViewGame_time = System.currentTimeMillis();
+        frame.getGame().requestFocus();
 
-
+        frame.getGame().getCanvas().setSize();
+        model.getEntities().get(0).setD(new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight()));
 
         while (input.getSoll()){
 
             long currentViewGame_time = System.currentTimeMillis();
             float differenceViewGame = ((float)(currentViewGame_time - lastViewGame_time))/1000f;
             lastViewGame_time = currentViewGame_time;
+            frame.getGame().requestFocus();
 
             //sollte unnötig sein
             //input = collect.getInput();
@@ -46,5 +51,7 @@ public class GameLoop{
             }
 
         }
+
+        frame.next();
     }
 }

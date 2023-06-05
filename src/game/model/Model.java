@@ -10,9 +10,9 @@ public class Model {
     private ArrayList<Entities> entities;
 
 
-    public Model(){
+    public Model(Dimension d){
         entities = new ArrayList<>();
-        entities.add(new Spieler(30,new Dimension(30,30)));
+        entities.add(new Spieler(30,d));
     }
 
 
