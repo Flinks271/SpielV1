@@ -4,20 +4,20 @@ import java.awt.*;
 
 public abstract class Entities {
     private int movSpeed;
-    private int size;
+    private Dimension size;
     private int pos_x;
     private int pos_y;
     private Dimension d ;
     private final Rectangle boundingArea;
 
 
-    Entities(int size, Dimension d){
+    Entities(Dimension size, Dimension d){
         this.d = d;
         this.size = size;
         this.pos_x = 100;
         this.pos_y = 0;
         this.movSpeed = 100;
-        boundingArea = new Rectangle(size,size);
+        boundingArea = new Rectangle(size);
         boundingArea.setLocation(pos_x,pos_y);
     }
 
@@ -28,8 +28,8 @@ public abstract class Entities {
         timeDifference *= (float)movSpeed;
         if((this.pos_x += timeDifference) < 0) {
             this.pos_x = 0;
-        }else if((this.pos_x += timeDifference) > d.getWidth()-size) {
-            this.pos_x =(int) d.getWidth()-size;
+        }else if((this.pos_x += timeDifference) > d.getWidth()-size.getWidth()) {
+            this.pos_x =(int) (d.getWidth() - size.getWidth());
         }else {
             this.pos_x += timeDifference;
         }
@@ -41,8 +41,8 @@ public abstract class Entities {
         timeDifference *= (float)movSpeed;
         if((this.pos_y += timeDifference) < 0) {
             this.pos_y = 0;
-        }else if((this.pos_y += timeDifference) > d.getHeight()-size) {
-            this.pos_y =(int) d.getHeight() -size;
+        }else if((this.pos_y += timeDifference) > d.getHeight()-size.getHeight()) {
+            this.pos_y =(int) (d.getHeight() -size.getHeight());
         }else {
             this.pos_y += timeDifference;
         }
@@ -60,11 +60,11 @@ public abstract class Entities {
         this.movSpeed = movSpeed;
     }
 
-    public int getSize() {
+    public Dimension getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Dimension size) {
         this.size = size;
     }
 
@@ -94,5 +94,13 @@ public abstract class Entities {
 
     public Rectangle getBoundingArea() {
         return boundingArea;
+    }
+
+    public Point getCenter(){
+        return new Point(pos_x + (int)size.getWidth() / 2, pos_y + (int)size.getHeight() / 2);
+    }
+
+    public void draw(Graphics2D g2D){
+
     }
 }

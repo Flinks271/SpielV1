@@ -1,6 +1,9 @@
 package game.controller.gameloop;
 
 import game.controller.Playerthroughput;
+import game.controller.gameloop.inputs.CollectPlayerInput;
+import game.controller.gameloop.inputs.CollectPlayerMouseInput;
+import game.controller.gameloop.inputs.Playerinput;
 import game.graphics.FelixFrame;
 import game.model.Model;
 
@@ -20,18 +23,26 @@ public class GameLoop{
         input = new Playerinput();
 
 
-        CollectPlayerInput collect = new CollectPlayerInput(input,put);
+        CollectPlayerInput collect = new game.controller.gameloop.inputs.CollectPlayerInput(input,put);
+        CollectPlayerMouseInput mouse = new CollectPlayerMouseInput(input);
 
         frame.getGame().addKeyListener(collect);
+        frame.getGame().getCanvas().addMouseListener(mouse);
+        frame.getGame().getCanvas().addMouseMotionListener(mouse);
+
 
         frame.getGame().requestFocus();
 
         frame.getGame().getCanvas().setSize();
-        model.getEntities().get(0).setD(new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight()));
+        Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
+        model.getStatMenu().setD(dtemp);
     }
 
 
     public void loop(){
+        Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
+        dtemp.setSize(dtemp.getWidth(),dtemp.getHeight() - 40);
+        model.getEntities().get(0).setD(dtemp);
         long lastViewGame_time = System.currentTimeMillis();
 
         while (input.getSoll()){
@@ -40,9 +51,6 @@ public class GameLoop{
             float differenceViewGame = ((float)(currentViewGame_time - lastViewGame_time))/1000f;
             lastViewGame_time = currentViewGame_time;
             frame.getGame().requestFocus();
-
-            //sollte unnötig sein
-            //input = collect.getInput();
 
             Update.update(input, model, differenceViewGame);
 

@@ -1,17 +1,16 @@
-package game.controller.gameloop;
+package game.controller.gameloop.inputs;
 
 import game.controller.Playerthroughput;
-import game.graphics.panels.GamePanel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-public class CollectPlayerInput implements KeyListener {
+public class CollectPlayerInput implements KeyListener{
     private final Playerinput input;
     private final Playerthroughput put;
 
-    CollectPlayerInput(Playerinput input, Playerthroughput put){
+    public CollectPlayerInput(Playerinput input, Playerthroughput put){
         this.input = input;
         this.put = put;
     }
@@ -40,9 +39,12 @@ public class CollectPlayerInput implements KeyListener {
         if(e.getKeyCode() == KeyEvent.VK_D) input.setRight(true);
         if(e.getKeyCode() == KeyEvent.VK_W) input.setUp(true);
         if(e.getKeyCode() == KeyEvent.VK_S) input.setDown(true);
+        if(e.getKeyCode() == KeyEvent.VK_SPACE) input.setSpace(true);
         if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             input.setSoll(false);
             put.setWelches(0);
         }
     }
+
+
 }

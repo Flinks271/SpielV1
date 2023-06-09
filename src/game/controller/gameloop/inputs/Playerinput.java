@@ -1,4 +1,6 @@
-package game.controller.gameloop;
+package game.controller.gameloop.inputs;
+
+import java.awt.*;
 
 public class Playerinput {
     private Boolean up;
@@ -6,13 +8,18 @@ public class Playerinput {
     private Boolean right;
     private Boolean left;
     private Boolean soll;
+    private Boolean angriff;
+    private Boolean space;
+    private Point mouse;
 
-    Playerinput(){
+    public Playerinput(){
         up = false;
         down = false;
         right = false;
         left = false;
         soll = true;
+        angriff = false;
+        space = false;
     }
 
     public Boolean getUp() {
@@ -53,5 +60,29 @@ public class Playerinput {
 
     public void setSoll(Boolean soll) {
         this.soll = soll;
+    }
+
+    public Boolean getAngriff() {
+        return angriff;
+    }
+
+    public void setAngriff(Boolean angriff) {
+        this.angriff = angriff;
+    }
+
+    public Boolean getSpace() {
+        return space;
+    }
+
+    public void setSpace(Boolean space) {
+        this.space = space;
+    }
+
+    public Point getMouse() {
+        return mouse;
+    }
+
+    public void setMouse(Point mouse) {
+        this.mouse = mouse;
     }
 }
