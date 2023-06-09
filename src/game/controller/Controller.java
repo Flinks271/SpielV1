@@ -40,7 +40,9 @@ public class Controller {
 
             try {
                 long auszeit = (long)(1000 / 60 - differenceViewGame);
-                Thread.sleep(auszeit);
+                if (auszeit > 0){
+                    Thread.sleep(auszeit);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
