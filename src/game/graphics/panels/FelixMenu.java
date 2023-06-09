@@ -27,6 +27,11 @@ public class FelixMenu extends JPanel implements ActionListener {
         render();
     }
 
+    public String getInhalt(){
+        JTextField temp =(JTextField) components[0];
+        return temp.getText();
+    }
+
     public void render(){
         JPanel test = new JPanel();
 

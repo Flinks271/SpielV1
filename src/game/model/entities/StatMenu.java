@@ -11,8 +11,6 @@ public class StatMenu extends Entities{
 
     public StatMenu(Dimension d) {
         super(new Dimension((int)d.getWidth(),40),d);
-
-        System.out.println(getBoundingArea());
     }
 
 
@@ -28,7 +26,7 @@ public class StatMenu extends Entities{
     public void draw(Graphics2D g2D , Model model){
         g2D.setColor(Color.CYAN);
         g2D.fill(getBoundingArea());
-        int x = 5;
+        int x = 10;
         int y = getPos_y() + 5;
         for (Action k : model.getActiveActions()){
             g2D.setColor(Color.BLACK);

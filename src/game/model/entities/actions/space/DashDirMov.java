@@ -16,7 +16,6 @@ public class DashDirMov extends Action {
 
     public void castSpace(Spieler spieler, Playerinput input){
         if (System.currentTimeMillis() - getLasttime() > getCooldown()){
-            setLasttime(System.currentTimeMillis());
 
             if (input.getUp() && input.getDown()){
 
@@ -27,11 +26,13 @@ public class DashDirMov extends Action {
                     if (y  < 0){
                         y = 0;
                     }
+                    setLasttime(System.currentTimeMillis());
                 }else if(input.getDown()){
                     y = y + length;
                     if (y  > spieler.getD().getHeight() - spieler.getSize().getHeight()){
                         y = (int) (spieler.getD().getHeight() - spieler.getSize().getHeight());
                     }
+                    setLasttime(System.currentTimeMillis());
                 }
                 spieler.setPos_y(y);
             }
@@ -45,11 +46,13 @@ public class DashDirMov extends Action {
                     if (x < 0){
                         x = 0;
                     }
+                    setLasttime(System.currentTimeMillis());
                 }else if(input.getRight()){
                     x += length;
                     if (x > spieler.getD().getWidth() - spieler.getSize().getWidth()){
                         x =(int) (spieler.getD().getWidth() - spieler.getSize().getWidth());
                     }
+                    setLasttime(System.currentTimeMillis());
                 }
                 spieler.setPos_x(x);
             }
