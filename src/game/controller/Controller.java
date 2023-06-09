@@ -20,7 +20,6 @@ public class Controller {
 
         model = new Model(d);
         frame = new FelixFrame(d, put);
-        loop = new GameLoop(model, frame, put);
 
         long lastViewGame_time = System.currentTimeMillis();
 
@@ -33,8 +32,12 @@ public class Controller {
                 case 0:
                     break;
                 case 1:
+                    loop = new GameLoop(model, frame, put);
+                    Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
+                    model.addPlayer(dtemp,"name");
                     loop.loop();
-                    System.out.println("ff");
+                    model.removePalyer();
+
                     break;
             }
 

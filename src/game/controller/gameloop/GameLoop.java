@@ -42,6 +42,7 @@ public class GameLoop{
     public void loop(){
         Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
         dtemp.setSize(dtemp.getWidth(),dtemp.getHeight() - 40);
+
         model.getEntities().get(0).setD(dtemp);
         long lastViewGame_time = System.currentTimeMillis();
 
