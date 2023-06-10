@@ -23,7 +23,6 @@ public class Dash extends Action {
 
             // angle in radians
             double angle =Math.atan2(mouse.getX() - s.getX(), mouse.getY() - s.getY());
-            System.out.println(angle);
 
             int x =spieler.getPos_x() +(int) (Math.sin(angle) * length);
             int y = spieler.getPos_y() +(int) (Math.cos(angle) * length);
@@ -46,7 +45,6 @@ public class Dash extends Action {
             spieler.setPos_y(y);
 
 
-            System.out.println(angle);
         }
     }
 

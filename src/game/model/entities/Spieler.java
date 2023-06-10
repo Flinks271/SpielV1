@@ -16,7 +16,6 @@ public class Spieler extends Entities{
     public Spieler(Dimension size, Dimension d, Model model, String name){
         super(size,d);
         this.name = name;
-        System.out.println(name);
         space = new DashDirMov();
         ArrayList actions = new ArrayList<>();
         actions.add(space);
