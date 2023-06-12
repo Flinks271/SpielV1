@@ -8,11 +8,11 @@ import game.graphics.FelixFrame;
 import game.model.Model;
 
 import java.awt.*;
-import java.util.Arrays;
+import java.awt.event.*;
 
 public class GameLoop{
-    private Model model;
-    private FelixFrame frame;
+    private final Model model;
+    private final FelixFrame frame;
     Playerinput input;
 
 
@@ -65,6 +65,17 @@ public class GameLoop{
             }
 
         }
+
+        for (KeyListener k:frame.getGame().getKeyListeners()) {
+            frame.getGame().removeKeyListener(k);
+        }
+        for (MouseListener k: frame.getGame().getCanvas().getMouseListeners()) {
+            frame.getGame().getCanvas().removeMouseListener(k);
+        }
+        for (MouseMotionListener k: frame.getGame().getCanvas().getMouseMotionListeners()) {
+            frame.getGame().getCanvas().removeMouseMotionListener(k);
+        }
+
 
         input.setSoll(true);
         frame.next();

@@ -18,8 +18,6 @@ public class Model {
         statMenu = new StatMenu(d);
         entities = new ArrayList<>();
         activeActions = new ArrayList<>();
-        Dimension dtemp = d;
-        dtemp.setSize(d.getWidth(),d.getHeight() - 40);
     }
 
     public void addPlayer(Dimension dtemp, String name){

@@ -11,13 +11,13 @@ import java.util.ArrayList;
 
 public class Spieler extends Entities{
     private Action space;
-    private String name;
+    private final String name;
 
     public Spieler(Dimension size, Dimension d, Model model, String name){
         super(size,d);
         this.name = name;
         space = new DashDirMov();
-        ArrayList actions = new ArrayList<>();
+        ArrayList<Action> actions = new ArrayList<>();
         actions.add(space);
         model.setActiveActions(actions);
     }
@@ -36,12 +36,12 @@ public class Spieler extends Entities{
     public void draw(Graphics2D g2D ){
         int nameWidth = g2D.getFontMetrics().stringWidth(name);
         int nameHeight = g2D.getFontMetrics().getHeight();
-        int y = (int) (getPos_y() - (nameHeight/2) );
+        int y = getPos_y() - (nameHeight/2);
         if (y < 11){
             y =(int) (getPos_y() + getSize().getHeight() + nameHeight);
         }
 
-        g2D.drawString(name,(int) (getPos_x() + (getSize().width / 2) - (nameWidth / 2)),y);
+        g2D.drawString(name, getPos_x() + (getSize().width / 2) - (nameWidth / 2),y);
 
         g2D.fill(getBoundingArea());
     }
