@@ -42,6 +42,7 @@ public class GameLoop{
     public void loop(){
         Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
         dtemp.setSize(dtemp.getWidth(),dtemp.getHeight() - 40);
+        frame.getGame().requestFocus();
 
         model.getEntities().get(0).setD(dtemp);
         long lastViewGame_time = System.currentTimeMillis();
@@ -51,15 +52,18 @@ public class GameLoop{
             long currentViewGame_time = System.currentTimeMillis();
             float differenceViewGame = ((float)(currentViewGame_time - lastViewGame_time))/1000f;
             lastViewGame_time = currentViewGame_time;
-            frame.getGame().requestFocus();
 
             Update.update(input, model, differenceViewGame);
 
             Render.render(frame.getGame().getCanvas(), model);
 
+            float pauseTime = (float)(System.currentTimeMillis() - currentViewGame_time);
+
             try {
-                long auszeit = (long)(1000 / 60 - differenceViewGame);
-                Thread.sleep(auszeit);
+                long auszeit = (long)(1000 / 60 - pauseTime);
+                if (auszeit > 0){
+                    Thread.sleep(auszeit);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

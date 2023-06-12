@@ -18,6 +18,7 @@ public class StatMenu extends Entities{
     public void setD(Dimension d){
         setPos_x(0);
         setPos_y((int)d.getHeight() - 40);
+        getBoundingArea().setSize((int)d.getWidth(),40);
         setLocation();
     }
 

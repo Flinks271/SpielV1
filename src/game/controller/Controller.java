@@ -33,7 +33,7 @@ public class Controller {
                     break;
                 case 1:
                     loop = new GameLoop(model, frame, put);
-                    Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
+                    Dimension dtemp = new Dimension(frame.getGame().getCanvas().getWidth(),frame.getGame().getCanvas().getHeight());
                     model.addPlayer(dtemp,frame.getMenu().getInhalt());
                     loop.loop();
                     model.removePalyer();
