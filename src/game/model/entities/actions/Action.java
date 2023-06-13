@@ -1,8 +1,6 @@
 package game.model.entities.actions;
 
-import game.model.entities.Spieler;
 
-import java.awt.*;
 
 public abstract class Action {
     private int cooldown;
@@ -10,12 +8,14 @@ public abstract class Action {
 
     public Action(){
         cooldown = 1500;
-        lasttime = System.currentTimeMillis();
+        lasttime = 0;
     }
 
-    public void castSpace(Spieler spieler, Point mouse, Dimension d){
-        System.out.println("cast SPace action");
+    public Action(int cooldown){
+        this.cooldown = cooldown;
+        lasttime = 0;
     }
+
 
     public int getCooldown() {
         return cooldown;
