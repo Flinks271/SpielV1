@@ -41,8 +41,10 @@ public class Controller {
                     break;
             }
 
+            long pauseTime = System.currentTimeMillis() - currentViewGame_time;
+
             try {
-                long auszeit = (long)(1000 / 60 - differenceViewGame);
+                long auszeit = 1000 / 60 - pauseTime;
                 if (auszeit > 0){
                     Thread.sleep(auszeit);
                 }

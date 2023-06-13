@@ -57,10 +57,10 @@ public class GameLoop{
 
             Render.render(frame.getGame().getCanvas(), model);
 
-            float pauseTime = (float)(System.currentTimeMillis() - currentViewGame_time);
+            long pauseTime = System.currentTimeMillis() - currentViewGame_time;
 
             try {
-                long auszeit = (long)(1000 / 60 - pauseTime);
+                long auszeit = 1000 / 60 - pauseTime;
                 if (auszeit > 0){
                     Thread.sleep(auszeit);
                 }
