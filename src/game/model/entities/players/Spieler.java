@@ -22,10 +22,11 @@ public class Spieler extends AliveThings {
         this.name = name;
         angriff = 0;
         space = new DashDirMov();
+        atack = new MeleeInit(this, model);
         ArrayList<Action> actions = new ArrayList<>();
+        actions.add(atack);
         actions.add(space);
         model.setActiveActions(actions);
-        atack = new MeleeInit(this, model);
     }
 
     public int getAngriff() {
@@ -35,6 +36,8 @@ public class Spieler extends AliveThings {
     public void setAngriff(int angriff) {
         this.angriff = angriff;
     }
+
+
 
     public void spacePressed(Point mouse, Playerinput input){
         if (space.getClass() == Dash.class){
@@ -49,7 +52,7 @@ public class Spieler extends AliveThings {
     public void leftMouseButton(Point mouse){
         if (atack.getClass() == MeleeInit.class){
             MeleeInit k = (MeleeInit) atack;
-            //k.cast(mouse);
+            k.cast(mouse);
         }
     }
 

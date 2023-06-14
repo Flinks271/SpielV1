@@ -42,7 +42,6 @@ public class GameLoop{
     public void loop(){
         Dimension dtemp = new Dimension(frame.getGame().getWidth(),frame.getGame().getHeight());
         dtemp.setSize(dtemp.getWidth(),dtemp.getHeight() - 40);
-        frame.getGame().requestFocus();
 
         model.getEntities().get(0).setD(dtemp);
         long lastViewGame_time = System.currentTimeMillis();
@@ -50,6 +49,9 @@ public class GameLoop{
         frame.repaint();
 
         while (input.getSoll()){
+            if (!frame.getGame().hasFocus()){
+                frame.getGame().requestFocus();
+            }
 
             long currentViewGame_time = System.currentTimeMillis();
             float differenceViewGame = ((float)(currentViewGame_time - lastViewGame_time))/1000f;

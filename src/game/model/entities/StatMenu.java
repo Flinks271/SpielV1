@@ -42,6 +42,8 @@ public class StatMenu extends Entities{
         g2D.drawString(kk.getHealth() + "/" + kk.getMaxhealth(), x + 5,y + 20);
 
         x = 220;
+
+
         for (Action k : model.getActiveActions()){
             g2D.setColor(Color.BLACK);
             g2D.fillOval(x,y, 30 , 30);
@@ -49,7 +51,7 @@ public class StatMenu extends Entities{
             //sich füllednde Kreise
             Arc2D arc = new Arc2D.Double(x,y,30,30, 90 , k.getCooldownPercent() * 360 ,Arc2D.PIE);
             g2D.fill(arc);
-            x += 10;
+            x += 40;
         }
         g2D.setColor(Color.BLACK);
     }

@@ -49,6 +49,9 @@ public class GamePanelCanvas extends Canvas {
 
         g2D.fill(a);
         g2D.fill(b);
+
+
+
         //System.out.println(b.getBounds2D().intersects(a.getBounds2D()));
 
         /*Area area = new Area(a);
@@ -60,13 +63,6 @@ public class GamePanelCanvas extends Canvas {
             System.out.println("intersects: no");
         }*/
 
-        int x = 100; // x-Koordinate des Mittelpunkts
-        int y = 100; // y-Koordinate des Mittelpunkts
-        int radius = 100; // Radius des Kreises
-        int startAngle = 60; // Startwinkel
-        int arcAngle = 60; // Winkel des Teilkreises
-        Arc2D arc = new Arc2D.Double((x - radius),( y - radius),( 2 * radius),( 2 * radius), startAngle, arcAngle,Arc2D.PIE);
-        ((Graphics2D) g).fill(arc);
 
 
     }

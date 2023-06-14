@@ -12,6 +12,7 @@ public class MeleeInit extends Action {
     Model model;
 
     public MeleeInit(Spieler spieler, Model model){
+        super(500);
         this.spieler = spieler;
         this.model = model;
     }
@@ -20,7 +21,7 @@ public class MeleeInit extends Action {
         if (System.currentTimeMillis() - getLasttime() > getCooldown()){
             setLasttime(System.currentTimeMillis());
             if (spieler.getAngriff() == 0){
-                model.addEntities(new MeleeAtack(12,1000,spieler,mouse, model));
+                model.addEntities(new MeleeAtack(12,100,spieler,mouse, model));
             }
         }
     }
