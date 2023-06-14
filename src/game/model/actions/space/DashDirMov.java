@@ -7,8 +7,6 @@ import game.model.actions.Action;
 public class DashDirMov extends Action {
     private int length;
 
-
-
     public DashDirMov(){
         super();
         length = 150;

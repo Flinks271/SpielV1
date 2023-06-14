@@ -21,7 +21,7 @@ public class Model {
     }
 
     public void addPlayer(Dimension dtemp, String name){
-        entities.add(0, new Spieler(new Dimension(30,30),dtemp, this, name));
+        entities.add(0, new Spieler(new Dimension(30,30),dtemp, this, name, 100));
     }
 
     public void removePalyer(){
@@ -38,6 +38,14 @@ public class Model {
 
     public ArrayList<Entities> getEntities() {
         return entities;
+    }
+
+    public void addEntities(Entities e) {
+        entities.add(e);
+    }
+
+    public void removeEntities(Entities e) {
+        entities.remove(e);
     }
 
     public void setEntities(ArrayList<Entities> entities) {

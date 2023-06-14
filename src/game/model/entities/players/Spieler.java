@@ -3,25 +3,37 @@ package game.model.entities.players;
 import game.controller.gameloop.inputs.Playerinput;
 import game.model.Model;
 import game.model.actions.Action;
+import game.model.actions.leftmouse.MeleeInit;
 import game.model.actions.space.Dash;
 import game.model.actions.space.DashDirMov;
 import game.model.entities.AliveThings;
-import game.model.entities.Entities;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 public class Spieler extends AliveThings {
     private Action space;
+    private Action atack;
     private final String name;
+    private int angriff;
 
-    public Spieler(Dimension size, Dimension d, Model model, String name){
-        super(size,d);
+    public Spieler(Dimension size, Dimension d, Model model, String name, int health){
+        super(size,d, health);
         this.name = name;
+        angriff = 0;
         space = new DashDirMov();
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(space);
         model.setActiveActions(actions);
+        atack = new MeleeInit(this, model);
+    }
+
+    public int getAngriff() {
+        return angriff;
+    }
+
+    public void setAngriff(int angriff) {
+        this.angriff = angriff;
     }
 
     public void spacePressed(Point mouse, Playerinput input){
@@ -31,6 +43,13 @@ public class Spieler extends AliveThings {
         } else if (space.getClass() == DashDirMov.class) {
             DashDirMov spaceü = (DashDirMov) space;
             spaceü.castSpace(this , input);
+        }
+    }
+
+    public void leftMouseButton(Point mouse){
+        if (atack.getClass() == MeleeInit.class){
+            MeleeInit k = (MeleeInit) atack;
+            //k.cast(mouse);
         }
     }
 

@@ -2,7 +2,10 @@ package game.controller.gameloop;
 
 import game.controller.gameloop.inputs.Playerinput;
 import game.model.Model;
+import game.model.entities.Entities;
 import game.model.entities.players.Spieler;
+
+import java.util.ArrayList;
 
 public class Update {
 
@@ -30,8 +33,19 @@ public class Update {
             spieler.spacePressed(input.getMouse(), input);
             input.setSpace(false);
         }
+        if (input.getAngriff()){
+            spieler.leftMouseButton(input.getMouse());
+            input.setAngriff(false);
+        }
         spieler.setLocation();
 
+        ArrayList<Entities> gone = new ArrayList<>();
+        for (Entities k: model.getEntities()) {
+            if (k.isKill()){
+                gone.add(k);
+            }
+        }
+        model.getEntities().removeAll(gone);
 
 
     }

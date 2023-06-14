@@ -13,7 +13,6 @@ public class CollectPlayerMouseInput implements MouseInputListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("heehe");
         if (e.getButton() == MouseEvent.BUTTON1){
             input.setAngriff(true);
         }

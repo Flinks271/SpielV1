@@ -1,5 +1,7 @@
 package game.model.entities.attacks;
 
+import game.model.Model;
+import game.model.entities.Entities;
 import game.model.entities.players.Spieler;
 import game.model.actions.Action;
 
@@ -7,47 +9,64 @@ import java.awt.*;
 import java.awt.geom.Arc2D;
 import java.util.Random;
 
-public class MeleeAtack extends Action {
+public class MeleeAtack extends Entities {
     private int damage;
     private int duration;
     private int pos_x;
     private int pos_y;
     private int rad;
-    private int iteriror;
+    private int ausmaß;
     private boolean dir;
-    private double StartAngle;
+    private double startAngle;
+    private long time;
+    private Model model;
     
 
     private Arc2D arc;
 
-    MeleeAtack(int cooldown, int damage, int duration, Spieler spieler, Point mouse){
-        super(cooldown);
+    public MeleeAtack(int damage, int duration, Spieler spieler, Point mouse, Model model){
+        super((int)spieler.getCenter().getX(),(int)spieler.getCenter().getY());
         dir = new Random().nextBoolean();
         Point s = spieler.getCenter();
 
         // angle in radians
-        double angle =Math.toDegrees( Math.atan2(mouse.getX() - s.getX(), mouse.getY() - s.getY()));
+        startAngle = (Math.toDegrees( Math.atan2(mouse.getX() - s.getX(), mouse.getY() - s.getY())));
+
+        if (dir){
+            startAngle -= 30 % 360;
+        }else {
+            startAngle += 30 % 360;
+        }
+
+        time = System.currentTimeMillis();
 
         this.damage = damage;
         this.duration = duration;
-        pos_x = -1;
-        pos_y = -1;
+        this.model = model;
+        pos_x = (int) s.getX();
+        pos_y = (int) s.getY();
         rad = 200;
-        iteriror = 0;
-        arc = new Arc2D.Double((pos_x - rad),( pos_y - rad),( 2 * rad),( 2 * rad), 0, 0,Arc2D.PIE);
+        ausmaß = 30;
+        arc = new Arc2D.Double((pos_x - rad),( pos_y - rad),( 2 * rad),( 2 * rad), startAngle, 30,Arc2D.PIE);
     }
 
 
-    private void cast(Spieler spieler, Point mouse){
-        Point s = spieler.getCenter();
+    public void draw(Graphics2D g){
 
-        // angle in radians
-        double angle =Math.toDegrees( Math.atan2(mouse.getX() - s.getX(), mouse.getY() - s.getY()));
+        double angle2;
+        g.draw(arc);
+        if (dir){
+            angle2 = startAngle + ((System.currentTimeMillis() - time)/duration) * ausmaß;
+            if (angle2 > startAngle){
+                setKill(true);
+            }
+        }else {
+            angle2 = startAngle - ((System.currentTimeMillis() - time)/duration) * ausmaß;
+            if (angle2 < startAngle){
+                setKill(true);
+            }
+        }
+        arc.setAngleStart(angle2);
 
-        iteriror+=10;
     }
-
-
-
-
 }
