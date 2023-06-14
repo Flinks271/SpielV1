@@ -46,7 +46,7 @@ public class MeleeAtack extends Entities {
         pos_x = (int) s.getX();
         pos_y = (int) s.getY();
         rad = 150;
-        ausmaß = 60;
+        ausmaß = 90;
         arc = new Arc2D.Double((pos_x - rad),( pos_y - rad),( 2 * rad),( 2 * rad), startAngle, 30,Arc2D.PIE);
     }
 

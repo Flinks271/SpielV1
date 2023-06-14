@@ -39,16 +39,14 @@ public class GamePanelCanvas extends Canvas {
     public void paint(Graphics g, Model model){
         Graphics2D g2D = (Graphics2D) g ;
         super.paint(g);
-        Arc2D a = new    Arc2D.Double(200, 200, 40, 40, 0, 45, Arc2D.PIE);
-        Rectangle2D b = new Rectangle(238,200,10,10);
+
         for (Entities e: model.getEntities()){
             e.draw(g2D);
         }
 
         model.getStatMenu().draw(g2D, model);
 
-        g2D.fill(a);
-        g2D.fill(b);
+
 
 
 
