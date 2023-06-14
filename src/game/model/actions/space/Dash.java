@@ -1,7 +1,7 @@
-package game.model.entities.actions.space;
+package game.model.actions.space;
 
-import game.model.entities.Spieler;
-import game.model.entities.actions.Action;
+import game.model.entities.players.Spieler;
+import game.model.actions.Action;
 
 import java.awt.*;
 

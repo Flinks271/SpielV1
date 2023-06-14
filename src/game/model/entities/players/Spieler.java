@@ -1,15 +1,17 @@
-package game.model.entities;
+package game.model.entities.players;
 
 import game.controller.gameloop.inputs.Playerinput;
 import game.model.Model;
-import game.model.entities.actions.Action;
-import game.model.entities.actions.space.Dash;
-import game.model.entities.actions.space.DashDirMov;
+import game.model.actions.Action;
+import game.model.actions.space.Dash;
+import game.model.actions.space.DashDirMov;
+import game.model.entities.AliveThings;
+import game.model.entities.Entities;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Spieler extends Entities{
+public class Spieler extends AliveThings {
     private Action space;
     private final String name;
 

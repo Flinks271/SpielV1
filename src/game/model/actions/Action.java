@@ -1,4 +1,4 @@
-package game.model.entities.actions;
+package game.model.actions;
 
 
 

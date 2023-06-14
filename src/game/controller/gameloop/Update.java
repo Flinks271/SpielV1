@@ -2,7 +2,7 @@ package game.controller.gameloop;
 
 import game.controller.gameloop.inputs.Playerinput;
 import game.model.Model;
-import game.model.entities.Spieler;
+import game.model.entities.players.Spieler;
 
 public class Update {
 

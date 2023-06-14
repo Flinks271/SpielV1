@@ -1,13 +1,13 @@
-package game.model.entities.actions.leftmouse;
+package game.model.entities.attacks;
 
-import game.model.entities.Spieler;
-import game.model.entities.actions.Action;
+import game.model.entities.players.Spieler;
+import game.model.actions.Action;
 
 import java.awt.*;
 import java.awt.geom.Arc2D;
 import java.util.Random;
 
-public class SimpleAttack extends Action {
+public class MeleeAtack extends Action {
     private int damage;
     private int duration;
     private int pos_x;
@@ -20,7 +20,7 @@ public class SimpleAttack extends Action {
 
     private Arc2D arc;
 
-    SimpleAttack(int cooldown,int damage, int duration, Spieler spieler, Point mouse){
+    MeleeAtack(int cooldown, int damage, int duration, Spieler spieler, Point mouse){
         super(cooldown);
         dir = new Random().nextBoolean();
         Point s = spieler.getCenter();

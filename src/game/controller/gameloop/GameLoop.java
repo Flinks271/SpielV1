@@ -46,6 +46,8 @@ public class GameLoop{
 
         model.getEntities().get(0).setD(dtemp);
         long lastViewGame_time = System.currentTimeMillis();
+        frame.revalidate();
+        frame.repaint();
 
         while (input.getSoll()){
 

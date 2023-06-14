@@ -1,4 +1,4 @@
-package game.model.entities;
+package game.model.entities.attacks;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,16 +1,18 @@
 package game.model.entities;
 
 import game.model.Model;
-import game.model.entities.actions.Action;
+import game.model.actions.Action;
 
 import java.awt.*;
 import java.awt.geom.Arc2D;
 
 public class StatMenu extends Entities{
+    private final Rectangle boundingArea;
 
 
     public StatMenu(Dimension d) {
-        super(new Dimension((int)d.getWidth(),40),d);
+        super(d);
+        boundingArea = new Rectangle((int)d.getWidth(),40);
     }
 
 
@@ -18,15 +20,16 @@ public class StatMenu extends Entities{
     public void setD(Dimension d){
         setPos_x(0);
         setPos_y((int)d.getHeight() - 40);
-        getBoundingArea().setSize((int)d.getWidth(),40);
         setLocation();
     }
 
-
+    public void setLocation(){
+        boundingArea.setLocation(getPos_x(),getPos_y());
+    }
 
     public void draw(Graphics2D g2D , Model model){
         g2D.setColor(Color.CYAN);
-        g2D.fill(getBoundingArea());
+        g2D.fill(boundingArea);
         int x = 10;
         int y = getPos_y() + 5;
         for (Action k : model.getActiveActions()){
